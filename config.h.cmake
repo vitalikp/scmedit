@@ -1,0 +1,3 @@
+
+/* Version number of package */
+#cmakedefine VERSION "@VERSION@"
