@@ -18,7 +18,7 @@ static int cli_mv(scm_map_t* map, int argc, char* argv[])
 {
 	if (argc < 3)
 	{
-		fprintf(stderr, "mv command require three arguments!\n");
+		fprintf(stderr, "mv command require two arguments!\n");
 
 		return -1;
 	}
