@@ -8,6 +8,7 @@ add_executable(scmedit
 	map.c
 	cli/cli.c
 	cli/cli-print.c
+	cli/show.c
 	cli/cli-mv.c
 	cli/rm.c
 	cli/cli-write.c

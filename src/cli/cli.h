@@ -22,6 +22,7 @@ typedef struct cli_cmd
 	const char *help;
 } cli_cmd;
 extern const cli_cmd clicmd_print;
+extern const cli_cmd clicmd_show;
 extern const cli_cmd clicmd_mv;
 extern const cli_cmd clicmd_rm;
 extern const cli_cmd clicmd_write;
