@@ -4,6 +4,7 @@
 add_executable(scmedit
 	utf8.c
 	channel.c
+	fav.c
 	map.c
 	cli/cli.c
 	cli/cli-print.c

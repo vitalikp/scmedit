@@ -11,6 +11,7 @@
 #include <string.h>
 
 #include "channel.h"
+#include "fav.h"
 
 #include "utf8.h"
 
@@ -119,20 +120,7 @@ int ch_encode(channel_t* ch, uint8_t* out)
 	memcpy(p, ch->raw4, 28);
 	p += 28;
 
-	htole32(ch->fav1, p);
-	p += 4;
-
-	htole32(ch->fav2, p);
-	p += 4;
-
-	htole32(ch->fav3, p);
-	p += 4;
-
-	htole32(ch->fav4, p);
-	p += 4;
-
-	htole32(ch->fav5, p);
-	p += 4;
+	p += fav_encode(ch->fav, p);
 
 	memcpy(p, ch->raw5, 7);
 	p += 7;
@@ -173,20 +161,7 @@ int ch_decode(channel_t* ch, uint8_t* in)
 	memcpy(ch->raw4, p, 28);
 	p += 28;
 
-	ch->fav1 = le32toh(p);
-	p += 4;
-
-	ch->fav2 = le32toh(p);
-	p += 4;
-
-	ch->fav3 = le32toh(p);
-	p += 4;
-
-	ch->fav4 = le32toh(p);
-	p += 4;
-
-	ch->fav5 = le32toh(p);
-	p += 4;
+	p += fav_decode(ch->fav, p);
 
 	memcpy(ch->raw5, p, 7);
 	p += 7;

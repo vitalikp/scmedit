@@ -12,6 +12,8 @@
 
 #include <stdint.h>
 
+#include "fav.h"
+
 
 typedef struct channel_t
 {
@@ -24,11 +26,7 @@ typedef struct channel_t
 	uint8_t		raw3[3*16];	/* raw data */
 	char*		name;		/* name */
 	uint8_t		raw4[28];	/* raw data */
-	uint32_t	fav1;		/* favorite bitmask 1 */
-	uint32_t	fav2;		/* favorite bitmask 2 */
-	uint32_t	fav3;		/* favorite bitmask 3 */
-	uint32_t	fav4;		/* favorite bitmask 4 */
-	uint32_t	fav5;		/* favorite bitmask 5 */
+	fav_t		fav;		/* favorite bitmask 1-5 */
 	uint8_t		raw5[7];	/* raw data */
 	uint8_t		cksum;		/* *checksum */
 } channel_t;
