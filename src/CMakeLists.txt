@@ -7,11 +7,11 @@ add_executable(scmedit
 	fav.c
 	map.c
 	cli/cli.c
-	cli/cli-print.c
+	cli/print.c
 	cli/show.c
-	cli/cli-mv.c
+	cli/mv.c
 	cli/rm.c
-	cli/cli-write.c
-	cli/cli-tab.c
+	cli/write.c
+	cli/tab.c
 	scmedit.c
 )
