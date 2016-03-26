@@ -21,6 +21,7 @@ const cli_cmd* cli_cmds[] =
 {
 	&clicmd_print,
 	&clicmd_mv,
+	&clicmd_rm,
 	&clicmd_write,
 	&clicmd_help,
 	NULL
