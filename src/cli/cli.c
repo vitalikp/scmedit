@@ -201,5 +201,5 @@ void cli_run(scm_map_t* map)
 		pcmd->cmd(map, argc, argv);
 	}
 
-	printf("quitting...\n");
+	printf("exiting...\n");
 }
