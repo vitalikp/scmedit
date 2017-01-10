@@ -1,5 +1,5 @@
 /*
- * Copyright © 2015 - Vitaliy Perevertun
+ * Copyright © 2015-2017 - Vitaliy Perevertun
  *
  * This file is part of scmedit
  *
@@ -21,9 +21,12 @@ typedef struct channel_t
 	uint16_t	pcr_pid;	/* program clock reference pid */
 	uint8_t		raw1[3];	/* raw data */
 	uint8_t		srv_type;	/* service type: 0x01 - TV, 0x02 - Radio, 0x0C - data, 0x19 - HD */
-	uint8_t		raw2[6];	/* raw data */
-	uint16_t	sid;
-	uint8_t		raw3[3*16];	/* raw data */
+	uint16_t	sid;		/* service id */
+	uint16_t	onid;		/* original network id */
+	uint16_t	nid;		/* network id */
+	uint8_t		raw2[12];	/* raw data */
+	uint16_t	symrate;	/* symbol rate */
+	uint8_t		raw3[2*17];	/* raw data */
 	char*		name;		/* name */
 	uint8_t		raw4[28];	/* raw data */
 	fav_t		fav;		/* favorite bitmask 1-5 */

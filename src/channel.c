@@ -1,5 +1,5 @@
 /*
- * Copyright © 2015 - Vitaliy Perevertun
+ * Copyright © 2015-2017 - Vitaliy Perevertun
  *
  * This file is part of scmedit
  *
@@ -106,11 +106,23 @@ int ch_encode(channel_t* ch, uint8_t* out)
 	p[0] = ch->srv_type;
 	p++;
 
-	memcpy(p, ch->raw2, 6);
-	p += 6;
+	htole16(ch->sid, p);
+	p += 2;
+
+	htole16(ch->onid, p);
+	p += 2;
+
+	htole16(ch->nid, p);
+	p += 2;
+
+	memcpy(p, ch->raw2, 12);
+	p += 12;
+
+	htole16(ch->symrate, p);
+	p += 2;
 
 	memcpy(p, ch->raw3, 3*16);
-	p += 3*16;
+	p += 2*17;
 
 	size_t sz = write_name(ch->name, p, 200);
 	if (sz < 0)
@@ -147,11 +159,23 @@ int ch_decode(channel_t* ch, uint8_t* in)
 	ch->srv_type = (uint8_t)p[0];
 	p++;
 
-	memcpy(ch->raw2, p, 6);
-	p += 6;
+	ch->sid = p[0] | p[1]<<8;
+	p += 2;
+
+	ch->onid = p[0] | p[1]<<8;
+	p += 2;
+
+	ch->nid = p[0] | p[1]<<8;
+	p += 2;
+
+	memcpy(ch->raw2, p, 3*16);
+	p += 12;
+
+	ch->symrate = p[0] | p[1]<<8;
+	p += 2;
 
 	memcpy(ch->raw3, p, 3*16);
-	p += 3*16;
+	p += 2*17;
 
 	size_t sz = read_name(p, &ch->name, 200);
 	if (sz < 0)

@@ -1,5 +1,5 @@
 /*
- * Copyright © 2016 - Vitaliy Perevertun
+ * Copyright © 2016-2017 - Vitaliy Perevertun
  *
  * This file is part of scmedit
  *
@@ -55,6 +55,12 @@ static int cli_show(scm_map_t* map, int argc, char* argv[])
 
 	printf("vpid:\t\t%d\n", ch->vpid);
 	printf("pcr_pid:\t%d\n", ch->pcr_pid);
+
+	printf("sid:\t\t0x%.4x\n", ch->sid);
+	printf("onid:\t\t0x%.4x\n", ch->onid);
+	printf("nid:\t\t0x%.4x\n", ch->nid);
+
+	printf("symrate:\t%d ksymb/s\n", ch->symrate);
 
 	return 0;
 }
