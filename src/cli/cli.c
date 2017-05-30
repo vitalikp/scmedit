@@ -57,7 +57,7 @@ static struct termios oldt;
 
 static void cli_restore(void)
 {
-    tcsetattr(0, TCSANOW, &oldt);
+	tcsetattr(0, TCSANOW, &oldt);
 }
 
 static void cli_init(void)
