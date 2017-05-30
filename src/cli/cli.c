@@ -1,5 +1,5 @@
 /*
- * Copyright © 2015 - Vitaliy Perevertun
+ * Copyright © 2015-2017 - Vitaliy Perevertun
  *
  * This file is part of scmedit
  *
