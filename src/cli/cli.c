@@ -37,8 +37,8 @@ static int cli_help(scm_map_t* map, int argc, char* argv[])
 	while (cli_cmds[i])
 	{
 		printf("  ");
-		printf("%s", cli_cmds[i]->name);
-		printf("\t%*s", 5, " ");
+		printf("%*s", 8, cli_cmds[i]->name);
+		printf("%*s", 3, " ");
 		printf("%s\n", cli_cmds[i]->help);
 
 		i++;
