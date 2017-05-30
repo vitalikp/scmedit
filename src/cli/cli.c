@@ -123,7 +123,7 @@ static int getchars(buf_t* buf)
 
 static void cli_parse(buf_t* buf, int* argc, char** argv)
 {
-	uint8_t i = 0;
+	uint8_t i = 0, j;
 	int cnt = 0;
 	char* p = buf->data;
 	argv[cnt++] = p;
@@ -134,6 +134,25 @@ static void cli_parse(buf_t* buf, int* argc, char** argv)
 		{
 			buf->data[i++] = '\0';
 			p = buf->data + i;
+
+			if (buf->data[i] == '"')
+			{
+				p++;
+				j = i + 1;
+
+				while (j < buf->len)
+				{
+					if (buf->data[j] == '"')
+					{
+						buf->data[j] = '\0';
+						i = j + 1;
+						break;
+					}
+
+					j++;
+				}
+			}
+
 			argv[cnt++] = p;
 		}
 
