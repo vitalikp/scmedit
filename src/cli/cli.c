@@ -40,6 +40,7 @@ static int cli_help(scm_map_t* map, int argc, char* argv[])
 		printf("%s", cli_cmds[i]->name);
 		printf("\t%*s", 5, " ");
 		printf("%s\n", cli_cmds[i]->help);
+
 		i++;
 	}
 
@@ -78,9 +79,8 @@ static int getchars(buf_t* buf)
 	while ((ch = getc(stdin)) != EOF)
 	{
 		if (ch == '\t')
-		{
 			return ch;
-		}
+
 		if (ch == 0x7F)
 		{
 			if (buf->len > 0)
@@ -92,25 +92,28 @@ static int getchars(buf_t* buf)
 			}
 			continue;
 		}
+
 		if (ch == '\e')
 		{
 			printf("\r\033[2K");
 			fflush(stdout);
+
 			return ch;
 		}
+
 		if (ch == 4)
 		{
 			if (buf->len > 0)
 				continue;
+
 			putchar('\n');
 			break;
 		}
 
 		putchar(ch);
 		if (ch == '\n')
-		{
 			return 0;
-		}
+
 		buf->data[buf->len++] = ch;
 		buf->data[buf->len] = '\0';
 	}
@@ -167,8 +170,10 @@ void cli_run(scm_map_t* map)
 
 		if (in.data[0] == 'q')
 			break;
+
 		if (!res && in.data[0] == '\0')
 			continue;
+
 		if (res == '\t')
 		{
 			if (cli_tab(&in) < 0)
@@ -178,9 +183,7 @@ void cli_run(scm_map_t* map)
 		}
 
 		if (res == '\e')
-		{
 			continue;
-		}
 
 		cli_parse(&in, &argc, argv);
 
