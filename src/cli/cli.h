@@ -1,5 +1,5 @@
 /*
- * Copyright © 2015 - Vitaliy Perevertun
+ * Copyright © 2015-2018 - Vitaliy Perevertun
  *
  * This file is part of scmedit
  *
@@ -30,10 +30,10 @@ extern const cli_cmd clicmd_help;
 extern const cli_cmd* cli_cmds[];
 
 
-typedef struct buf buf_t;
+typedef struct cli cli_t;
 
 
-int cli_tab(buf_t* in);
+int cli_tab(cli_t* cli);
 void cli_run(scm_map_t* map);
 
 #endif

@@ -1,5 +1,5 @@
 /*
- * Copyright © 2015 - Vitaliy Perevertun
+ * Copyright © 2015-2018 - Vitaliy Perevertun
  *
  * This file is part of scmedit
  *
@@ -12,7 +12,7 @@
 #include <string.h>
 
 #include "cli.h"
-#include "cli/buf_s.h"
+#include "cli/cli_s.h"
 
 
 static void cli_tab_cmds(const char* in)
@@ -37,8 +37,15 @@ static void cli_tab_cmds(const char* in)
 		putchar('\n');
 }
 
-int cli_tab(buf_t* in)
+int cli_tab(cli_t* cli)
 {
+	buf_t *in;
+
+	if (!cli)
+		return -1;
+
+	in = &cli->in;
+
 	if (in->data[0])
 	{
 		uint8_t i = 0;

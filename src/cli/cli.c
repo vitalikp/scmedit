@@ -1,5 +1,5 @@
 /*
- * Copyright © 2015-2017 - Vitaliy Perevertun
+ * Copyright © 2015-2018 - Vitaliy Perevertun
  *
  * This file is part of scmedit
  *
@@ -15,7 +15,7 @@
 #include <termios.h>
 
 #include "cli.h"
-#include "cli/buf_s.h"
+#include "cli/cli_s.h"
 
 
 const cli_cmd* cli_cmds[] =
@@ -165,9 +165,16 @@ static void cli_parse(buf_t* buf, int* argc, char** argv)
 
 void cli_run(scm_map_t* map)
 {
-	cli_init();
+	cli_t cli = {};
+	buf_t *in;
 
-	buf_t in;
+	if (!map)
+		return;
+
+	cli.map = map;
+	in = &cli.in;
+
+	cli_init();
 
 	cli_cmd* pcmd;
 	uint8_t i;
@@ -180,23 +187,23 @@ void cli_run(scm_map_t* map)
 	printf("(press q for quit)\n");
 	while (true)
 	{
-		in.len = 0;
-		in.data[0] = '\0';
+		in->len = 0;
+		in->data[0] = '\0';
 		printf("scmedit>");
 
-		read: res = getchars(&in);
+		read: res = getchars(in);
 		if (res < 0)
 			break;
 
-		if (in.data[0] == 'q')
+		if (in->data[0] == 'q')
 			break;
 
-		if (!res && in.data[0] == '\0')
+		if (!res && in->data[0] == '\0')
 			continue;
 
 		if (res == '\t')
 		{
-			if (cli_tab(&in) < 0)
+			if (cli_tab(&cli) < 0)
 				continue;
 
 			goto read;
@@ -205,7 +212,7 @@ void cli_run(scm_map_t* map)
 		if (res == '\e')
 			continue;
 
-		cli_parse(&in, &argc, argv);
+		cli_parse(in, &argc, argv);
 
 		i = 0;
 		while((pcmd=(cli_cmd*)cli_cmds[i++]))
