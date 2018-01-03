@@ -12,6 +12,7 @@
 #include <string.h>
 
 #include "cli.h"
+#include "cli/buf_s.h"
 
 
 static void cli_tab_cmds(const char* in)

@@ -30,11 +30,7 @@ extern const cli_cmd clicmd_help;
 extern const cli_cmd* cli_cmds[];
 
 
-typedef struct buf_t
-{
-	char data[256];
-	uint8_t len;
-} buf_t;
+typedef struct buf buf_t;
 
 
 int cli_tab(buf_t* in);

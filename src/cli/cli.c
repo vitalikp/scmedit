@@ -15,6 +15,7 @@
 #include <termios.h>
 
 #include "cli.h"
+#include "cli/buf_s.h"
 
 
 const cli_cmd* cli_cmds[] =
