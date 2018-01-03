@@ -7,18 +7,10 @@
  * See the file LICENSE.
  */
 
-#ifndef _CLI_S_H_
-#define _CLI_S_H_
+#ifndef _BUF_H_
+#define _BUF_H_
 
-#include "cli.h"
-#include "cli/buf.h"
-#include "cli/buf_s.h"
+typedef struct buf buf_t;
 
 
-struct cli
-{
-	buf_t in;
-	scm_map_t* map;
-};
-
-#endif /* _CLI_S_H_ */
+#endif /* _BUF_H_ */
