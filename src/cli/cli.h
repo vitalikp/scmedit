@@ -15,10 +15,12 @@
 #include "map.h"
 
 
+typedef struct cli cli_t;
+
 typedef struct cli_cmd
 {
 	const char* name;
-	int (*cmd)(scm_map_t* map, int argc, char* argv[]);
+	int (*cmd)(cli_t *cli, int argc, char* argv[]);
 	const char *help;
 } cli_cmd;
 extern const cli_cmd clicmd_print;
@@ -28,9 +30,6 @@ extern const cli_cmd clicmd_rm;
 extern const cli_cmd clicmd_write;
 extern const cli_cmd clicmd_help;
 extern const cli_cmd* cli_cmds[];
-
-
-typedef struct cli cli_t;
 
 
 int cli_tab(cli_t* cli);

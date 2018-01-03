@@ -9,7 +9,7 @@
 
 #include <stdio.h>
 
-#include "cli.h"
+#include "cli/cli_s.h"
 
 
 static encode_func encode = &ch_encode;
@@ -45,7 +45,7 @@ static int scm_write(const char* name, scm_map_t* map)
 	return total;
 }
 
-static int cli_write(scm_map_t* map, int argc, char* argv[])
+static int cli_write(cli_t *cli, int argc, char* argv[])
 {
 	if (argc < 2 || !argv[1])
 	{
@@ -53,7 +53,7 @@ static int cli_write(scm_map_t* map, int argc, char* argv[])
 		return -1;
 	}
 
-	if (scm_write(argv[1], map) < 0)
+	if (scm_write(argv[1], cli->map) < 0)
 	{
 		fprintf(stderr, "error write file: %m\n");
 

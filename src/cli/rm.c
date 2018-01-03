@@ -10,10 +10,10 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-#include "cli.h"
+#include "cli/cli_s.h"
 
 
-static int cli_rm(scm_map_t* map, int argc, char* argv[])
+static int cli_rm(cli_t *cli, int argc, char* argv[])
 {
 	if (argc < 2)
 	{
@@ -35,7 +35,7 @@ static int cli_rm(scm_map_t* map, int argc, char* argv[])
 
 	channel_t* ch;
 
-	ch = map_remove(map, num);
+	ch = map_remove(cli->map, num);
 
 	if (!ch)
 	{

@@ -29,7 +29,7 @@ const cli_cmd* cli_cmds[] =
 	NULL
 };
 
-static int cli_help(scm_map_t* map, int argc, char* argv[])
+static int cli_help(cli_t *cli, int argc, char* argv[])
 {
 	printf("Commands:\n");
 
@@ -228,7 +228,7 @@ void cli_run(scm_map_t* map)
 			continue;
 		}
 
-		pcmd->cmd(map, argc, argv);
+		pcmd->cmd(&cli, argc, argv);
 	}
 
 	printf("exiting...\n");

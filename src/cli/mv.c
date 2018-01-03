@@ -10,11 +10,11 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-#include "cli.h"
+#include "cli/cli_s.h"
 
 
 
-static int cli_mv(scm_map_t* map, int argc, char* argv[])
+static int cli_mv(cli_t *cli, int argc, char* argv[])
 {
 	if (argc < 3)
 	{
@@ -46,18 +46,18 @@ static int cli_mv(scm_map_t* map, int argc, char* argv[])
 	channel_t* ch1;
 	channel_t* ch2;
 
-	ch1 = map_remove(map, num1);
-	ch2 = map_remove(map, num2);
+	ch1 = map_remove(cli->map, num1);
+	ch2 = map_remove(cli->map, num2);
 
 	if (ch1)
 	{
-		map_put(map, num2, ch1);
+		map_put(cli->map, num2, ch1);
 		printf("channel '%s' moved from [%d] to [%d] position\n", ch1->name, num1, num2);
 	}
 
 	if (ch2)
 	{
-		map_put(map, num1, ch2);
+		map_put(cli->map, num1, ch2);
 		printf("channel '%s' moved from [%d] to [%d] position\n", ch2->name, num2, num1);
 	}
 

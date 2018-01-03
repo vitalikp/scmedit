@@ -10,11 +10,11 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-#include "cli.h"
+#include "cli/cli_s.h"
 #include "fav.h"
 
 
-static int cli_show(scm_map_t* map, int argc, char* argv[])
+static int cli_show(cli_t *cli, int argc, char* argv[])
 {
 	if (argc < 2)
 	{
@@ -36,7 +36,7 @@ static int cli_show(scm_map_t* map, int argc, char* argv[])
 
 	channel_t* ch;
 
-	ch = map_get(map, num);
+	ch = map_get(cli->map, num);
 
 	if (!ch)
 	{

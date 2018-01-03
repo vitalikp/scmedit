@@ -9,12 +9,12 @@
 
 #include <stdio.h>
 
-#include "cli.h"
+#include "cli/cli_s.h"
 
 
-static int cli_print(scm_map_t* map, int argc, char* argv[])
+static int cli_print(cli_t *cli, int argc, char* argv[])
 {
-	map_print(map);
+	map_print(cli->map);
 
 	return 0;
 }
