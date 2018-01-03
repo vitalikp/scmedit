@@ -13,4 +13,6 @@
 typedef struct buf buf_t;
 
 
+int buf_read(buf_t *buf);
+
 #endif /* _BUF_H_ */
