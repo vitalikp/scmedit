@@ -11,7 +11,7 @@
 #include <stdarg.h>
 
 #include "cli/cli_s.h"
-#include "cli/buf.h"
+#include "buf/buf.h"
 
 
 int cli_read(cli_t* cli, const char *title, const char *fmt, ...)

@@ -9,7 +9,7 @@
 
 #include <stdio.h>
 
-#include "cli/buf.h"
+#include "buf/buf.h"
 #include "buf/buf_s.h"
 
 

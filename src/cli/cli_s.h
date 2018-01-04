@@ -11,7 +11,7 @@
 #define _CLI_S_H_
 
 #include "cli.h"
-#include "cli/buf.h"
+#include "buf/buf.h"
 #include "buf/buf_s.h"
 
 
