@@ -11,6 +11,7 @@ add_executable(scmedit
 	cli/read.c
 	cli/print.c
 	cli/show.c
+	cli/rename.c
 	cli/mv.c
 	cli/rm.c
 	cli/write.c
