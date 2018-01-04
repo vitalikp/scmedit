@@ -35,4 +35,6 @@ extern const cli_cmd* cli_cmds[];
 int cli_tab(cli_t* cli);
 void cli_run(scm_map_t* map);
 
+int cli_read(cli_t* cli, const char *title, const char *fmt, ...);
+
 #endif
