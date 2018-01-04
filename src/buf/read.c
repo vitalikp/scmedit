@@ -10,7 +10,7 @@
 #include <stdio.h>
 
 #include "cli/buf.h"
-#include "cli/buf/buf_s.h"
+#include "buf/buf_s.h"
 
 
 int buf_read(buf_t *buf)

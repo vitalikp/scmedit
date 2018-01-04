@@ -12,7 +12,7 @@
 
 #include "cli.h"
 #include "cli/buf.h"
-#include "cli/buf/buf_s.h"
+#include "buf/buf_s.h"
 
 
 struct cli

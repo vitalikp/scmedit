@@ -6,7 +6,7 @@ add_executable(scmedit
 	channel.c
 	fav.c
 	map.c
-	cli/buf/read.c
+	buf/read.c
 	cli/cli.c
 	cli/read.c
 	cli/print.c
