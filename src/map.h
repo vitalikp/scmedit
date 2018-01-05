@@ -11,6 +11,7 @@
 #define _MAP_H_
 
 #include <stdint.h>
+#include <stdio.h>
 
 #include "channel.h"
 
